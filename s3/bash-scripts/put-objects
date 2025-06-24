@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+echo "put objects"
+
+if [ -z "$1" ];then
+    echo "Please provide a bucket name. eg: ./bucket my-bucket"
+    exit 1
+fi
+
+if [ -z "$2" ];then
+    echo "Please provide a file name. eg: ./bucket my-bucket /tmp/file.txt"
+    exit 1
+fi
+
+BUCKET_NAME=$1
+FILENAME=$2
+KEY=$(basename $FILENAME)
+
+aws s3api put-object --bucket $BUCKET_NAME \
+--key $KEY \
+--body $FILENAME

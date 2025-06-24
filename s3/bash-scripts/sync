@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+echo "sync"
+
+if [ -z "$1" ]; then
+    echo "Please provide a bucket name. eg: ./bucket my-bucket"
+    exit 1
+fi
+
+if [ -z "$2" ]; then
+    echo "Please provide a file prefixt. eg: ./bucket my-bucket my-prefix"
+    exit 1
+fi
+
+BUCKET_NAME=$1
+FILE_PREFIX=$2
+
+# Set the target directory
+TARGET_DIR="/tmp/s3-bash-scripts"
+
+# Set min and max number of files and lines per file
+MIN_FILES=1
+MAX_FILES=10
+MIN_LINES=3
+MAX_LINES=8
+
+# Remove Directory
+rm -r "$TARGET_DIR"
+
+# Create the directory if it doesn't exist
+mkdir -p "$TARGET_DIR"
+
+# Generate a random number of files
+NUM_FILES=$(( RANDOM % (MAX_FILES - MIN_FILES + 1) + MIN_FILES ))
+
+for ((i = 1; i <= NUM_FILES; i++)); do
+    FILENAME="$TARGET_DIR/${FILE_PREFIX}_$i.txt"
+    NUM_LINES=$(( RANDOM % (MAX_LINES - MIN_LINES + 1) + MIN_LINES ))
+
+    # Generate random lines of text
+    for ((j = 1; j <= NUM_LINES; j++)); do
+        base64 /dev/urandom | head -c 32 >> "$FILENAME"
+        echo >> "$FILENAME"
+    done
+done
+
+tree $TARGET_DIR
+
+aws s3 sync $TARGET_DIR s3://$BUCKET_NAME/files/
