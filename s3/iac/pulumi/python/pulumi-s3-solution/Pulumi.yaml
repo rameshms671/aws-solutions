@@ -1,0 +1,11 @@
+name: pulumi-s3-solution
+description: A minimal AWS Python pulumi program for S3
+runtime:
+  name: python
+  options:
+    toolchain: pip
+    virtualenv: venv
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: aws-python
