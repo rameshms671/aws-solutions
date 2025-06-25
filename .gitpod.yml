@@ -1,4 +1,7 @@
 tasks:
+  - name: InstallCdkCli
+    before: |
+      npm i -g aws-cdk
   # https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
   - name: InstallTerraform
     before: |
