@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+echo "destroy simple s3 cfn template"
+
+# https://docs.aws.amazon.com/cli/latest/reference/cloudformation/
+
+STACK_NAME=my-s3-cfn
+
+aws cloudformation delete-stack \
+--stack-name $STACK_NAME \
+--region us-east-1
