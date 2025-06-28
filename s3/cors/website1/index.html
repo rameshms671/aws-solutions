@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome to AWS</title>
+  </head>
+  <body>
+    <p>Here we will check the <strong>CORS</strong> in S3 Bucket</p>
+    <script type="text/javascript">
+    fetch('http://my-cors-website2-msr.s3-website-us-east-1.amazonaws.com/my-details.json')
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+    </script>
+  </body>
+</html>
