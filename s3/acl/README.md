@@ -125,6 +125,14 @@ aws s3api get-bucket-acl --bucket my-acl-bucket-msr
     "Grants": [
         {
             "Grantee": {
+                "DisplayName": "msrameshcse",
+                "ID": "204546020d0bd978c73cfd0f6ed0082d5cdada17b2f36f04ce0a3a45e39165a3",
+                "Type": "CanonicalUser"
+            },
+            "Permission": "FULL_CONTROL"
+        },
+        {
+            "Grantee": {
                 "DisplayName": "msrameshkumarcse",
                 "ID": "282b1541a0bddc571938cae0f5c6a997c3071b6be51aa3a95dcbd4efbaa49458",
                 "Type": "CanonicalUser"
