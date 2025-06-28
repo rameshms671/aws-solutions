@@ -46,7 +46,7 @@ Directly mention the rule in the CLI
 ```
 aws s3api put-bucket-ownership-controls \
 --bucket my-acl-bucket-msr \
---ownership-controls="Rules=[{ObjectOwnership=BucketOwnerEnforced}]"
+--ownership-controls="Rules=[{ObjectOwnership=BucketOwnerPreferred}]"
 ```
 Provide Rules through a JSON file
 ```
