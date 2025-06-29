@@ -59,4 +59,7 @@ Below is the structure of the generated project.
 ```
 mvn clean package
 ```
-
+#### Running the program
+```
+mvn compile exec:java -Dexec.mainClass=io.github.rameshms671.App
+```
